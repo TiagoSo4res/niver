@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Mensagem na Internet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>I LOVE YOU</h1>
+        </header>
+        
+        <main>
+            <div class="message-box">
+                <div class="message-content">
+                    {{ mensagem }}
+                </div>
+            </div>
+            
+            <div class="info">
+                <p>Te amo querida!</p>
+                <p class="timestamp">Carregado em: <span id="datetime"></span></p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        // Atualiza data e hora
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = 
+                now.toLocaleDateString('pt-BR', options);
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
